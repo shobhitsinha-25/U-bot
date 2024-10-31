@@ -1,0 +1,170 @@
+.homepage{
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    height: 100%;
+    
+
+    @media screen and (max-width:1024px) {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .left{
+        display: flex;
+        flex: 1;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        text-align: center;
+    }
+    .right{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        .imagecontainer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            background-color: white;
+            width: 80%;
+            height: 50%;
+            position: relative;
+
+            .bgcontainer{
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 50px;
+
+            }
+            .bg{
+                background-image: url("/bg.png");
+                opacity: 0.5;
+                width: 200%;
+                height: 100%;
+                animation: 8s ease-in-out infinite alternate botbgslide;
+
+            }
+
+            .chat{
+                position: absolute;
+                bottom: -50px;
+                right: -70px;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 20px;
+                background-color:black;
+                border-radius: 10px;
+
+                img{
+                    height: 32px;
+                    width: 32px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+
+            .bot{
+                width: 80%;
+                height: 80%;
+                object-fit: contain;
+                animation: 3s ease-in-out infinite alternate botanimation;
+            }
+        }
+    }
+    h1{
+        font-size: 80px;
+        background: linear-gradient(to right,rgb(141, 219, 17),pink);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    h3{
+        font-weight: 400;
+        max-width: 70%;
+    }
+    .getstarted{
+        padding: 15px 25px;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        font-size: 14px;
+        border-radius: 15px;
+        margin-top: 10px;
+
+        &:hover{
+            background-color: white;
+            color:rgb(10, 128, 232);;
+        }
+    }
+    .orbital{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0.15;
+        z-index: -1;
+        animation:  100s linear infinite rotateorbital;  
+
+    }
+    .terms{
+        position:absolute;
+        bottom: 20px;
+        left: 50%;
+        display: flex;
+        transform: translateX(-50%);
+        flex-direction:column;
+        align-items: center;
+        gap: 20px;
+
+        img{
+            height: 60px;
+            width: 60px;
+        }
+        .Link{
+            display: flex;
+            font-size: 15px;
+            gap: 10px;
+            color: white;
+            padding: 5px 5px;
+            border-radius: 15px;
+            
+        }
+    }
+}
+@keyframes rotateorbital {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(60deg);
+    }
+}
+
+@keyframes botanimation {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    100% {
+        transform: scale(1.1) rotate(-5deg);
+    }
+}
+
+@keyframes botbgslide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
