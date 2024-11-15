@@ -1,8 +1,6 @@
 import express from "express";
 import ImageKit from "imagekit";
 import dotenv from "dotenv";
-import path from "path";
-import url,{fileURLToPath} from "url";
 import cors from "cors";
 import mongoose from "mongoose";
 import Chat from "./Models/chat.js";
@@ -12,12 +10,9 @@ import UserChats from "./models/userChats.js";
 
 dotenv.config();
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 const app = express();
-
-const __filename=fileURLToPath(import.meta.url);
-const __dirname=path.dirname(__filename);
 
 app.use(cors({
     origin: process.env.FRONTEND_URL,
@@ -159,12 +154,6 @@ app.put("/api/chats/:id", requireAuth(), async (req, res) => {
 app.use((err,res) => {
   console.error(err.stack)
   res.status(401).send('Unauthenticated!')
-})
-
-app.use(express.static(path.join(__dirname,"../frontend")))
-
-app.get("*",(req,res)=>{
-  res.sendFile(path.join(__dirname,"../frontend","index.html"))
 })
 
 app.listen(port, () => {
