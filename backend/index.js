@@ -100,6 +100,10 @@ app.get("/api/userchats", requireAuth(), async (req, res) => {
   try {
     const userChats = await UserChats.find({ userId });
 
+    if (!userChats.length) {
+      return res.status(200).send([]);  
+    }
+
     res.status(200).send(userChats[0].chats);
   } catch (err) {
     console.log(err);
